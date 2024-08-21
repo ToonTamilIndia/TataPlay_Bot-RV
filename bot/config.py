@@ -87,7 +87,7 @@ class FILENAME_CONFIG:
 
     #Dict made to add Group Tag according to the user requesting to DL (according to there TG ID) if not in list then takes the default_group_tag
     group_tag_mapping = {
-        '2023056811': 'ToonEncodes,
+        '2023056811': 'ToonEncodes',
         '-1001888818932' : 'ToonEncodes'
     }
 
