@@ -9,20 +9,20 @@ dirName = os.path.basename(dirPath)
 
 
 class TG_CONFIG:
-    api_id = 
+    api_id = 7931165
 
-    api_hash = ""
+    api_hash = "5a2e46d1e6deb1456c75aa743bc8e0e6"
 
-    bot_token = ""
+    bot_token = "6009987351:AAFY8_hxgcME2yKzkFCrbITSjapw8vwweog"
 
     #DEVS or #OWNERS
-    sudo_users = [1984763765, 6360672597]
+    sudo_users = [2023056811, -1001888818932]
 
-    session = "conan76_web_dl_bot"
+    session = "TEI_TATA_PLAY_bot"
 
-    bot_creater = "Conan76"  # Don't Remove if you Respect the DEV
+    bot_creater = "TEIMohaish"  # Don't Remove if you Respect the DEV
 
-    bot_creater_id = "@conan7612"  # Don't Remove if you Respect the DEV
+    bot_creater_id = "@TEIMohanish"  # Don't Remove if you Respect the DEV
 
 
 class UPLOAD_CONGIF:
@@ -87,8 +87,8 @@ class FILENAME_CONFIG:
 
     #Dict made to add Group Tag according to the user requesting to DL (according to there TG ID) if not in list then takes the default_group_tag
     group_tag_mapping = {
-        '1984763765': 'Conan76',
-        '6360672597' : 'RV'
+        '2023056811': 'ToonEncodes,
+        '-1001888818932' : 'ToonEncodes'
     }
 
 
