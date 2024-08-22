@@ -22,7 +22,7 @@ def within_12_hours(timestamp):
 
 class TPLAY_API():
     API_ALL_CHANNELS = "https://kong-tatasky.videoready.tv/content-detail/pub/api/v1/channels?limit=1000"
-    FETCHER = f"https://babel-in.xyz/tata/channels}"
+    FETCHER = f"https://babel-in.xyz/tata/channels"
     HMAC = f"https://fox.toxic-gang.xyz/tata/hmac{(random.randint(10,99))}"
     HMAC_v2 = f"https://fox.toxic-gang.xyz/tata/sliv/{(random.randint(10,99))}"
     def __init__(self, channel_slug):
