@@ -21,8 +21,8 @@ def within_12_hours(timestamp):
     return time_difference < timedelta(hours=1)
 
 class TPLAY_API():
-    API_ALL_CHANNELS = "https://tpmm3u.vercel.app/tataplay/playlist"
-    FETCHER = "https://tpmm3u.vercel.app/tataplay/keys/id"
+    API_ALL_CHANNELS = "https://kong-tatasky.videoready.tv/content-detail/pub/api/v1/channels?limit=1000"
+    FETCHER = "https://tpmm3u.vercel.app/tataplay/playlist"
     HMAC = "https://fox.toxic-gang.xyz/tata/hmac{}".format(random.randint(10,99))
     HMAC_v2 = "https://fox.toxic-gang.xyz/tata/sliv/{}".format(random.randint(10,99))
     def __init__(self, channel_slug):
