@@ -21,10 +21,10 @@ def within_12_hours(timestamp):
     return time_difference < timedelta(hours=1)
 
 class TPLAY_API():
-    API_ALL_CHANNELS = "https://fox.toxic-gang.xyz/tata/channels"
-    FETCHER = "https://fox.toxic-gang.xyz/tata/key/{id}"
-    HMAC = "https://fox.toxic-gang.xyz/tata/hmac{}".format(random.randint(10,99))
-    HMAC_v2 = "https://fox.toxic-gang.xyz/tata/sliv/{}".format(random.randint(10,99))
+    API_ALL_CHANNELS = "https://kong-tatasky.videoready.tv/content-detail/pub/api/v1/channels?limit=1000"
+    FETCHER = "https://yuvraj.fun/tp/fetcher.json"
+    HMAC = "https://yuvraj.fun/tp/hmac.json".format(random.randint(10,99))
+    HMAC_v2 = "https://yuvraj.fun/tp/hmac.json".format(random.randint(10,99))
     def __init__(self, channel_slug):
         self.channel_slug = channel_slug
         # self.check_and_update_tplay_fetcher_file
@@ -36,9 +36,12 @@ class TPLAY_API():
 
 
     def get_hmac(self):
-        response = requests.get(self.HMAC_v2)
-        matches = re.findall(r'\?hdnea=exp=[^"]+', response.text)
-        return matches[0].replace("?", "").strip()
+        response = requests.get(self.HMAC)
+        response.raise_for_status()
+        data = response.json()
+        hdnea = data['data']['hmac']['hdnea']['value']
+        res = hdnea.split('exp=', 1)[1]
+        return res
 
     def get_data(self):
       
