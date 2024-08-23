@@ -78,9 +78,14 @@ def mpd_table(url, init_file_name, ott, keys, lic_url):
 
 def load_xml(xml: Union[str, bytes]) -> etree.ElementTree:
     """Safely parse XML data to an ElementTree, without namespaces in tags."""
+    if xml is None:
+        raise ValueError("XML data cannot be None.")
+    
     if not isinstance(xml, bytes):
         xml = xml.encode("utf8")
+    
     root = etree.fromstring(xml)
+    
     for elem in root.getiterator():
         if not hasattr(elem.tag, "find"):
             # e.g. comment elements
@@ -92,7 +97,9 @@ def load_xml(xml: Union[str, bytes]) -> etree.ElementTree:
                 continue
             del elem.attrib[name]
             elem.attrib[local_name] = value
+    
     etree.cleanup_namespaces(root)
+    
     return root
 
 class Range(str, Enum):
