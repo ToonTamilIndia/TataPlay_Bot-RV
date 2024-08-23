@@ -25,38 +25,37 @@ class TPLAY_API():
     FETCHER = "https://yuvraj.fun/tp/fetcher.json"
     HMAC = "https://yuvraj.fun/tp/hmac.json?random={}".format(random.randint(10,99))
     HMAC_v2 = "https://yuvraj.fun/tp/hmac.json?random={}".format(random.randint(10,99)
+    
+def __init__(self, channel_slug):
+        self.channel_slug = channel_slug
+        # self.check_and_update_tplay_fetcher_file
+        self.channels = requests.get(self.FETCHER).json()
+    
+def get_hmac_v2(self):
+    response = requests.get(self.HMAC).json()['data']
+    return response['hmac']['hdnea']['value']
 
+def get_hmac(self):
+    response = requests.get(self.HMAC)
+    response.raise_for_status()
+    data = response.json()
+    hdnea = data['data']['hmac']['hdnea']['value']
+    res = hdnea.split('exp=', 1)[1]
+    return res
 
+def get_data(self):
+    data = [channel for channel in self.channels['data']['channels'] if (channel.get('name').replace(" ", "").lower() == self.channel_slug.lower())][0]
+    if data:
+        return data
+    else:
+        raise Exception("Channel slug didn't matched with the channel in the tplay data. Please check and try again!...")
 
-
-    def get_hmac_v2(self):
-        response = requests.get(self.HMAC).json()['data']
-        return response['hmac']['hdnea']['value']
-
-    def get_hmac(self):
-        response = requests.get(self.HMAC)
-        response.raise_for_status()
-        data = response.json()
-        hdnea = data['data']['hmac']['hdnea']['value']
-        res = hdnea.split('exp=', 1)[1]
-        return res
-
-    def get_data(self):
-      
-
-        data = [channel for channel in self.channels['data']['channels'] if (channel.get('name').replace(" ", "").lower() == self.channel_slug.lower())][0]
-
-        if data:
-            return data
-        else:
-            raise Exception("Channel slug didn't matched with the channel in the tplay data. Please check and try again!...")
-
-    def get_channelId(self):
-        all_channels = requests.get(self.API_ALL_CHANNELS).json()['data']['list']
-
-        try:
-            data = [channel for channel in all_channels if channel.get('title').replace("!" , "").replace("Hindi" , "").replace(" ", "") == self.channel_slug][0]
-            return data.get('id')
-        except Exception:
-            raise Exception("Enable to extract channelId from channelSlug")
+def get_channelId(self):
+    all_channels = requests.get(self.API_ALL_CHANNELS).json()['data']['list']
+    
+    try:
+        data = [channel for channel in all_channels if channel.get('title').replace("!" , "").replace("Hindi" , "").replace(" ", "") == self.channel_slug][0]
+        return data.get('id')
+    except Exception:
+        raise Exception("Enable to extract channelId from channelSlug")
 
