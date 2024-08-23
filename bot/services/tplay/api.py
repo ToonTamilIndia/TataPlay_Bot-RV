@@ -22,9 +22,9 @@ def within_12_hours(timestamp):
 
 class TPLAY_API():
     API_ALL_CHANNELS = "https://kong-tatasky.videoready.tv/content-detail/pub/api/v1/channels?limit=1000"
-    FETCHER = f"https://yuvraj.fun/tp/fetcher.json"
-    HMAC = f"https://yuvraj.fun/tp/hmac.json{(random.randint(10,99))}"
-    HMAC_v2 = f"https://yuvraj.fun/tp/hmac.json{(random.randint(10,99))}"
+    FETCHER = "https://yuvraj.fun/tp/fetcher.json"
+    HMAC = "https://yuvraj.fun/tp/hmac.json?random={}".format(random.randint(10,99))
+    HMAC_v2 = "https://yuvraj.fun/tp/hmac.json?random={}".format(random.randint(10,99)
     def __init__(self, channel_slug):
         self.channel_slug = channel_slug
         # self.check_and_update_tplay_fetcher_file
@@ -41,12 +41,6 @@ class TPLAY_API():
         hdnea = data['data']['hmac']['hdnea']['value']
         res = hdnea.split('exp=', 1)[1]
         return res
-
-
-    def get_hmac(self):
-        response = requests.get(self.HMAC_v2)
-        matches = re.findall(r'\?hdnea=exp=[^"]+', response.text)
-        return matches[0].replace("?", "").strip()
 
     def get_data(self):
       
