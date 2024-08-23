@@ -34,6 +34,14 @@ class TPLAY_API():
         response = requests.get(self.HMAC).json()['data']
         return response['hmac']['hdnea']['value']
 
+    def get_hmac(self):
+        response = requests.get(self.HMAC)
+        response.raise_for_status()
+        data = response.json()
+        hdnea = data['data']['hmac']['hdnea']['value']
+        res = hdnea.split('exp=', 1)[1]
+        return res
+
 
     def get_hmac(self):
         response = requests.get(self.HMAC_v2)
