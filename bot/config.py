@@ -55,8 +55,8 @@ class GD_SHARER_CONFIG:
 
 class PROXY_CONFIG:
     #Keep it as a empty string if you don't have proxy
-    proxy_url = "103.57.80.28"
-    USE_PROXY_WHILE_DOWNLOADING = True
+    proxy_url = ""
+    USE_PROXY_WHILE_DOWNLOADING = False
 
 
 class FTP_CONFIG:
