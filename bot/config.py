@@ -16,7 +16,7 @@ class TG_CONFIG:
     bot_token = "6009987351:AAFY8_hxgcME2yKzkFCrbITSjapw8vwweog"
 
     #DEVS or #OWNERS
-    sudo_users = [2023056811, -1001888818932]
+    sudo_users = [2023056811, -1002248603989]
 
     session = "TEI_TATA_PLAY_bot"
 
@@ -83,7 +83,7 @@ class FILENAME_CONFIG:
     language_order = ['hi', 'ta', 'te', 'bn', 'gu', 'pa', 'as', 'or',
                     'ml', 'mr', 'kn', 'th', 'ja', 'th', 'id', 'ms', 'ko', 'bho', 'bh', 'en']
 
-    default_group_tag = "RV" # Don't change it if you Respect the DEV
+    default_group_tag = "TEMohanish" # Don't change it if you Respect the DEV
 
     #Dict made to add Group Tag according to the user requesting to DL (according to there TG ID) if not in list then takes the default_group_tag
     group_tag_mapping = {
@@ -98,16 +98,19 @@ DL_DONE_MSG = """
 <b>FileName : </b> <code>{}</code>
 <b>OTT : </b> <code>{}</code>
 <b>Size : </b> <code>{}</code>
+<b> With Love by TeamTEI & TeamSHI <b/>
 """
 
 
 START_MSG = """
 <b>Hello <code>@{}</code>,
-A TG WEB-DL Bot</b>
+A Tata Play WEB-DL Bot</b>
 
 > <code>{}</code>
 
-<b>Made by @conan7612</b>
+<b> Subscriptions Available </b>
+
+<b>Made by @TEMohanish</b>
 """
 
 SIMPLE_CAPTION = '''<code>{}</code>'''
