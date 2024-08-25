@@ -200,7 +200,7 @@ class Filename:
             if language_and_audio_parts is not None:
                 filename = f"{init_file_name}.{video_resolution}.{video_quality}.{self.ott}.WEB-DL.{'-'.join(language_and_audio_parts)}.{video_codec_p2p}.{range}.{subtitle_write_data}-{self.GR}.mkv"
             else:
-                filename = f"{init_file_name}.{video_resolution}.{video_quality}.{self.ott}.WEB-DL.{self.audio_codec_name}.{video_codec_p2p}.{range}.{subtitle_write_data}-{self.GR}.mkv"
+                filename = f"{init_file_name}.{video_resolution}.{video_quality}.{self.ott}.WEB-DL.{video_codec_p2p}.{range}.{subtitle_write_data}-{self.GR}.mkv"
 
 
         else:
