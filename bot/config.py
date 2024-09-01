@@ -16,7 +16,7 @@ class TG_CONFIG:
     bot_token = "6009987351:AAFY8_hxgcME2yKzkFCrbITSjapw8vwweog"
 
     #DEVS or #OWNERS
-    sudo_users = [2023056811, -1002248603989]
+    sudo_users = [2023056811, -1002248603989, 1137065263]
 
     session = "TEI_TATA_PLAY_bot"
 
