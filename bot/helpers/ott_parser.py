@@ -103,6 +103,7 @@ def ott_argument_parser(args_string, ott):
             required=data["required"],
             nargs='?' if data["long_parsername"] in ['hevc', 'info'] else None
         )
+    parser.add_argument("--split", "-split", type=int, help="Split value")
 
     # Create a string buffer to capture the error message
     error_buffer = StringIO()

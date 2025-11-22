@@ -22,7 +22,7 @@ def within_12_hours(timestamp):
 
 class TPLAY_API():
     API_ALL_CHANNELS = "https://kong-tatasky.videoready.tv/content-detail/pub/api/v1/channels?limit=1000"
-    FETCHER = "https://yuvraj.fun/tp/fetcher.json"
+    FETCHER = "https://api.ygxworld.workers.dev/fetcher.json"
     HMAC = "https://yuvraj.fun/tp/hmac.json".format(random.randint(10,99))
     HMAC_v2 = "https://yuvraj.fun/tp/hmac.json".format(random.randint(10,99))
     def __init__(self, channel_slug):

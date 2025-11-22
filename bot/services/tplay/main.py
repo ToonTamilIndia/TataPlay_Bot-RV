@@ -5,6 +5,21 @@ from bot.services.tplay.api import TPLAY_API
 from bot.helpers.utils import get_tplay_past_details
 from bot.helpers.download.mpd import Processor
 from bot.helpers.utils import add_quotes_to_title
+from datetime import datetime
+
+
+def utc_to_unix(utc_time_str):
+    """
+    Convert a UTC datetime string to a Unix timestamp.
+    
+    Parameters:
+        utc_time_str (str): UTC datetime in "YYYYMMDDTHHMMSS" format
+        
+    Returns:
+        int: Unix timestamp
+    """
+    dt = datetime.strptime(utc_time_str, "%Y%m%dT%H%M%S")
+    return int(dt.timestamp())
 
 class TPLAY():
     def __init__(self, command, app, message):
@@ -14,7 +29,8 @@ class TPLAY():
 
         if any(x in command for x in ["-title", "--title"]):
             command = add_quotes_to_title(command)  
-
+        self.split_value = next((command.split(f, 1)[1].strip().split()[0] for f in ["-split","--split"] if f in command), None)
+        
         try:
             self.parsed_args = ott_argument_parser(command, "tplay")
         except Exception as e:
@@ -63,9 +79,9 @@ class TPLAY():
     def download_catchup(self):
         date_text = "{}-{}".format(self.parsed_args.start, self.parsed_args.end)
         begin, end, date_data, time_data = get_tplay_past_details(date_text)
-        hmac = self.ott_api.get_hmac()
-        mpd = self.channel_data.get('manifest_url').replace("bpweb", "bpprod").replace(".akamaized", "catchup.akamaized") + "?begin=" + str(begin) + "&end=" + str(end) + "&" + hmac
-        key = [keys for keys in self.channel_data.get('clearkeys') if keys.get('source') == "media_segment"][0]['hex']
+        content_id = self.channel_data.get('license_url').split("ContentId=")[1]
+
+        mpd = "http://127.0.0.1:6811/playlist.mpd?id=" + self.channel_data.get('id')+ "&contentId=" + str(content_id) + "&begin=" + str(utc_to_unix(begin)) + "&end=" + str(utc_to_unix(end))
 
         init_title = self.parsed_args.title if self.parsed_args.title != "" else self.channel_data.get('name')
 
@@ -83,8 +99,8 @@ class TPLAY():
         Processor(
         self.app, 
         self.message, 
-        mpd, 
-        key, 
+        mpd,
+        self.split_value,  
         video_resolution=self.parsed_args.resolution,
         video_quality=self.parsed_args.vquality, audio_quality=self.parsed_args.aquality,
         alang=self.parsed_args.alang, init_file_name=name, ott=self.ott, fallback_language=None,
