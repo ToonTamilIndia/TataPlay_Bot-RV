@@ -13,8 +13,7 @@ class TG_CONFIG:
 
     api_hash = "5a2e46d1e6deb1456c75aa743bc8e0e6"
 
-    bot_token = "7180852858:AAH3R_7Iw8oDfEIlntekUnx-ZFDhA6Y3LEE"
-
+    bot_token = os.getenv("BOT_TOKEN")
     #DEVS or #OWNERS
     sudo_users = [2023056811, -1002248603989, 1137065263]
 
@@ -154,3 +153,4 @@ else:
 
 gauth = GoogleAuth()
 GoogleAuth.DEFAULT_SETTINGS['client_config_file'] = client_secrets_json
+
