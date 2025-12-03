@@ -81,7 +81,7 @@ class TPLAY():
         begin, end, date_data, time_data = get_tplay_past_details(date_text)
         content_id = self.channel_data.get('license_url').split("ContentId=")[1]
 
-        mpd = "http://127.0.0.1:6811/playlist.mpd?id=" + self.channel_data.get('id')+ "&contentId=" + str(content_id) + "&begin=" + str(utc_to_unix(begin)) + "&end=" + str(utc_to_unix(end))
+        mpd = "https://692299110013e3ca633f.fra.appwrite.run/playlist.mpd?id=" + self.channel_data.get('id')+ "&contentId=" + str(content_id) + "&begin=" + str(utc_to_unix(begin)) + "&end=" + str(utc_to_unix(end))
 
         init_title = self.parsed_args.title if self.parsed_args.title != "" else self.channel_data.get('name')
 
@@ -121,6 +121,7 @@ class TPLAY():
 
 
         
+
 
 
 
